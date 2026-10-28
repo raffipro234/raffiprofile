@@ -1,0 +1,873 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08051b">
+  <meta name="description" content="RAFFI.SPACE — Personal website Raffi Nasri Maulana">
+
+  <title>RAFFI.SPACE — Galaxy Neon</title>
+
+  <!-- FOTO UNTUK FAVICON WEBSITE -->
+  <link rel="icon" type="image/jpeg" href="https://files.catbox.moe/xn4mft.jpg">
+  <link rel="apple-touch-icon" href="https://files.catbox.moe/xn4mft.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #08051b;
+      --panel: rgba(20, 15, 48, .76);
+      --purple: #a855f7;
+      --blue: #38bdf8;
+      --pink: #f472b6;
+      --white: #f8f7ff;
+      --muted: #b9b5d5;
+      --border: rgba(192, 132, 252, .24);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    #stars {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -3;
+    }
+
+    .nebula {
+      position: fixed;
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      filter: blur(110px);
+      opacity: .18;
+      z-index: -2;
+      pointer-events: none;
+      animation: nebulaMove 12s ease-in-out infinite alternate;
+    }
+
+    .nebula.one {
+      top: -160px;
+      left: -150px;
+      background: #8b5cf6;
+    }
+
+    .nebula.two {
+      right: -180px;
+      top: 45%;
+      background: #ec4899;
+      animation-delay: -5
+
+s;
+    }
+
+    @keyframes nebulaMove {
+      from { transform: translate(0, 0); }
+      to { transform: translate(80px, 60px); }
+    }
+
+    .intro {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 25px;
+      background: radial-gradient(ellipse at center, #211044, #08051b 75%);
+      transition: opacity .8s, visibility .8s;
+    }
+
+    .intro.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .planet {
+      width: 145px;
+      height: 145px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 25%, #f0abfc, #8b5cf6 40%, #312e81 75%);
+      box-shadow: 0 0 40px #a855f7, 0 0 100px #7c3aed80;
+      position: relative;
+      margin-bottom: 32px;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .planet::after {
+      content: "";
+      position: absolute;
+      width: 190px;
+      height: 48px;
+      border: 3px solid #67e8f9;
+      border-radius: 50%;
+      top: 48px;
+      left: -24px;
+      transform: rotate(-22deg);
+      box-shadow: 0 0 16px #38bdf8;
+    }
+
+    @keyframes float {
+      50% { transform: translateY(-15px) rotate(5deg); }
+    }
+
+    .intro h1, .logo, h2 {
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .intro h1 {
+      font-size: clamp(28px, 6vw, 52px);
+      letter-spacing: 3px;
+      background: linear-gradient(90deg, #fff, #c084fc, #67e8f9);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .intro p {
+      color: var(--muted);
+      margin: 14px 0 28px;
+    }
+
+    .btn {
+      border: 0;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 13px 23px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(110deg, #9333ea, #6366f1, #0891b2);
+      box-shadow: 0 0 25px #8b5cf650;
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 35px #a855f780;
+    }
+
+    header {
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(8, 5, 27, .78);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(18px);
+    }
+
+    .logo {
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      background: linear-gradient(90deg, #c084fc, #67e8f9);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    nav {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+    }
+
+    nav a {
+      color: #d8d3ee;
+      font-size: 12px;
+      transition: color .2s;
+    }
+
+    nav a:hover { color: #67e8f9; }
+
+    .menu-btn {
+      display: none;
+      border: 1px solid var(--border);
+      background: #1b1236;
+      color: white;
+      border-radius: 10px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    main { padding-top: 65px; }
+
+    section {
+      padding: 100px 7%;
+      scroll-margin-top: 65px;
+    }
+
+    .hero {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 65px;
+      flex-wrap: wrap;
+    }
+
+    .hero-copy { max-width: 560px; }
+
+    .eyebrow {
+      color: #67e8f9;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(35px, 5.5vw, 65px);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #c084fc, #67e8f9, #f0abfc);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-copy p, .section-desc {
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 14px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 27px;
+    }
+
+    .btn-outline {
+      border: 1px solid #a855f780;
+      background: #a855f715;
+      box-shadow: none;
+    }
+
+    .profile-wrap {
+      width: min(320px, 80vw);
+      aspect-ratio: 1;
+      padding: 8px;
+      border-radius: 35px;
+      background: linear-gradient(140deg, #a855f7, #38bdf8, #f472b6);
+      box-shadow: 0 0 45px #8b5cf650;
+      transform: rotate(3deg);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .profile-inner {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 29px;
+      background: #17102e;
+      transform: rotate(-3deg);
+    }
+
+    .profile-photo {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin: 0 auto 45px;
+      max-width: 650px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(24px, 4vw, 36px);
+      margin-bottom: 15px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .glass {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 26px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 12px 45px #00000015;
+    }
+
+    .about-grid, .card-grid, .social-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      max-width: 1050px;
+      margin: auto;
+    }
+
+    .about-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .glass h3 {
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+
+    .glass p, .glass li {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .detail {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 11px 0;
+      border-bottom: 1px solid #ffffff10;
+      font-size: 12px;
+    }
+
+    .detail span:first-child { color: var(--muted); }
+    .detail span:last-child { text-align: right; }
+
+    .card-icon {
+      font-size: 29px;
+      margin-bottom: 15px;
+    }
+
+    .project-card, .hobby-card, .social-card {
+      transition: transform .3s, border-color .3s;
+    }
+
+    .project-card:hover, .hobby-card:hover, .social-card:hover {
+      transform: translateY(-6px);
+      border-color: #a855f7a0;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 10px;
+      padding: 5px 10px;
+      margin-top: 14px;
+      border-radius: 30px;
+      color: #d8b4fe;
+      background: #a855f720;
+      border: 1px solid #a855f740;
+    }
+
+    .music-card {
+      max-width: 690px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .album {
+      flex: 0 0 125px;
+      height: 125px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-size: 45px;
+      background: linear-gradient(145deg, #9333ea, #312e81, #0891b2);
+      box-shadow: 0 0 25px #8b5cf640;
+    }
+
+    .music-info { flex: 1; min-width: 0; }
+    .music-info h3 { margin-bottom: 5px; }
+
+    .music-info audio { width: 100%; margin-top: 15px; }
+
+    .social-card {
+      display: block;
+      text-align: center;
+    }
+
+    .social-card .card-icon { font-size: 32px; }
+
+    footer {
+      text-align: center;
+      padding: 30px 15px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 2;
+    }
+
+    footer a { color: #c084fc; }
+
+    /* ANIMASI MUNCUL SAAT SCROLL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px) scale(.985);
+      filter: blur(3px);
+      transition:
+        opacity .75s ease,
+        transform .75s cubic-bezier(.2,.7,.2,1),
+        filter .75s ease;
+      transition-delay: var(--reveal-delay, 0ms);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal {
+        opacity: 1;
+        transform: none;
+        filter: none;
+      }
+    }
+
+    @media (max-width: 800px) {
+      header { padding: 13px 5%; }
+      .menu-btn { display: block; }
+      nav {
+        position: absolute;
+        top: 63px;
+        right: 5%;
+        width: min(250px, 90vw);
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 10px;
+        background: #100b29f5;
+        border: 1px solid var(--border);
+        border-radius: 15px;
+      }
+      nav.open { display: flex; }
+      nav a { padding: 12px; border-radius: 8px; }
+      nav a:hover { background: #a855f720; }
+      section { padding: 80px 6%; }
+      .hero { min-height: auto; padding-top: 90px; gap: 40px; }
+      .hero-copy { text-align: center; }
+      .hero-buttons { justify-content: center; }
+      .about-grid, .card-grid, .social-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 520px) {
+      .about-grid, .card-grid, .social-grid { grid-template-columns: 1fr; }
+      .music-card { flex-direction: column; align-items: stretch; }
+      .album { width: 100%; flex-basis: auto; height: 150px; }
+      .detail { font-size: 11px; }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="stars"></canvas>
+  <div class="nebula one"></div>
+  <div class="nebula two"></div>
+
+  <!-- HALAMAN PEMBUKA -->
+  <div class="intro" id="intro">
+    <div class="planet"></div>
+    <h1>RAFFI.SPACE</h1>
+    <p>Selamat datang di semesta kecilku ✦</p>
+    <button class="btn" id="enterBtn">🚀 Masuk ke Website</button>
+  </div>
+
+  <header>
+    <a href="#home" class="logo">RAFFI.PROFILE ✦</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Buka menu" aria-expanded="false">☰ Menu</button>
+    <nav id="nav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#hobbies">Hobbies</a>
+      <a href="#projects">Projects</a>
+      <a href="#music">Favorite Song</a>
+      <a href="#social">Social Media</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section class="hero" id="home">
+      <div class="hero-copy reveal">
+        <div class="eyebrow">✦ Welcome to my universe</div>
+        <h1>Hey, I'm <span class="gradient-text">Raffi Nasri Maulana</span></h1>
+        <p>
+          Selamat datang di website pribadiku! Tempat untuk mengenal diriku,
+          melihat project, menikmati musik favorit, dan menjelajahi sedikit
+          dunia kreatifku.
+        </p>
+        <div class="hero-buttons">
+          <a class="btn" href="#about">Kenalan Yuk ✨</a>
+          <a class="btn btn-outline" href="#projects">Lihat Project</a>
+        </div>
+      </div>
+
+      <div class="profile-wrap reveal">
+        <div class="profile-inner">
+          <img
+            class="profile-photo"
+            src="https://files.catbox.moe/xn4mft.jpg"
+            alt="Foto Raffi Nasri Maulana"
+            loading="eager"
+            referrerpolicy="no-referrer"
+          >
+        </div>
+      </div>
+    </section>
+
+    
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-heading reveal">
+    <div class="eyebrow">Get to know me</div>
+    <h2>About <span class="gradient-text">Me</span></h2>
+    <p>Kenali sedikit tentang diriku dan perjalanan kreatifku.</p>
+  </div>
+
+  <div class="about-grid">
+    <div class="glass reveal">
+      <h3>👨‍🚀 Tentang Aku</h3>
+      <p>
+        Halo! Aku Raffi Nasri Maulana. Aku tinggal dan lahir di Bekasi.
+        Aku suka mengeksplorasi hal baru, membuat website, coding,
+        serta mengembangkan ide-ide kreatif menjadi sesuatu yang menarik.
+        Website RAFFI.SPACE ini aku buat saat berusia 14 tahun sebagai
+        tempat untuk menampilkan profil, hobi, dan karya-karyaku.
+      </p>
+    </div>
+
+    <div class="glass reveal">
+      <h3>🌌 My Profile</h3>
+
+      <div class="detail">
+        <span>Nama</span>
+        <span>Raffi Nasri Maulana</span>
+      </div>
+
+      <div class="detail">
+        <span>Tempat lahir</span>
+        <span>Bekasi</span>
+      </div>
+
+      <div class="detail">
+        <span>Tanggal lahir</span>
+        <span>23 Juli</span>
+      </div>
+
+      <div class="detail">
+        <span>Tempat tinggal</span>
+        <span>Bekasi</span>
+      </div>
+
+      <div class="detail">
+        <span>Usia saat membuat website</span>
+        <span>14 tahun</span>
+      </div>
+
+      <div class="detail">
+        <span>Minat</span>
+        <span>Coding & Kreativitas</span>
+      </div>
+
+      <div class="detail">
+        <span>Website</span>
+        <span>RAFFI.PROFILE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- HOBBIES -->
+    <section id="hobbies">
+      <div class="section-heading reveal">
+        <div class="eyebrow">Things I enjoy</div>
+        <h2>My <span class="gradient-text">Hobbies</span></h2>
+        <p>Hal-hal yang seru untuk dilakukan di waktu luang.</p>
+      </div>
+
+      <div class="card-grid">
+        <article class="glass hobby-card reveal">
+          <div class="card-icon">⚽</div>
+          <h3>Main Bola</h3>
+          <p>Menikmati permainan, olahraga, dan serunya bermain bersama teman.</p>
+        </article>
+        <article class="glass hobby-card reveal">
+          <div class="card-icon">💻</div>
+          <h3>Coding</h3>
+          <p>Mencoba ide baru dan membuat website dengan desain yang menarik.</p>
+        </article>
+        <article class="glass hobby-card reveal">
+          <div class="card-icon">🎬</div>
+          <h3>Editing</h3>
+          <p>Mengedit video dan foto agar terlihat lebih keren dan kreatif.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-heading reveal">
+        <div class="eyebrow">My creative corner</div>
+        <h2>My <span class="gradient-text">Projects</span></h2>
+        <p>Beberapa bidang project yang aku suka eksplorasi.</p>
+      </div>
+
+      <div class="card-grid">
+        <article class="glass project-card reveal">
+          <div class="card-icon">🌐</div>
+          <h3>Website Design</h3>
+          <p>Membangun halaman web dengan tampilan modern, responsif, dan penuh animasi.</p>
+          <span class="tag">HTML · CSS · JS</span>
+        </article>
+        <article class="glass project-card reveal">
+          <div class="card-icon">🤖</div>
+          <h3>Bot & Tools</h3>
+          <p>Mengeksplorasi tools digital dan ide otomatisasi untuk berbagai kebutuhan.</p>
+          <span class="tag">Development</span>
+        </article>
+        <article class="glass project-card reveal">
+          <div class="card-icon">🎨</div>
+          <h3>Creative Editing</h3>
+          <p>Mencoba desain grafis, konsep visual, dan editan dengan gaya unik.</p>
+          <span class="tag">Creative</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- FAVORITE SONG -->
+    <section id="music">
+      <div class="section-heading reveal">
+        <div class="eyebrow">Now playing in my universe</div>
+        <h2>Favorite <span class="gradient-text">Song</span></h2>
+        <p>Temani waktu santai dengan musik favorit.</p>
+      </div>
+
+      <div class="glass music-card reveal">
+        <div class="album">🎧</div>
+        <div class="music-info">
+          <h3>J.A.P.</h3>
+          <p>Sheila On 7 · Favorite Song</p>
+          <audio controls preload="metadata">
+            <source src="https://files.catbox.moe/qioche.mp3" type="audio/mpeg">
+            Browser kamu tidak mendukung pemutar audio.
+          </audio>
+          <p style="font-size:11px;margin-top:8px">
+            Jika lagu tidak dapat diputar, coba periksa kembali link audio.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOCIAL MEDIA -->
+    <section id="social">
+      <div class="section-heading reveal">
+        <div class="eyebrow">Let's connect</div>
+        <h2>Social <span class="gradient-text">Media</span></h2>
+        <p>Temukan dan hubungi aku melalui platform berikut.</p>
+      </div>
+
+      <div class="social-grid">
+        <a class="glass social-card reveal"
+           href="https://instagram.com/raffi__v2" target="_blank" rel="noopener noreferrer">
+          <div class="card-icon">📸</div>
+          <h3>Instagram</h3>
+          <p>@raffi__v2</p>
+          <span class="tag">Visit Profile ↗</span>
+        </a>
+
+        <a class="glass social-card reveal"
+           href="https://t.me/Raffioffci5" target="_blank" rel="noopener noreferrer">
+          <div class="card-icon">✈️</div>
+          <h3>Telegram</h3>
+          <p>@Raffioffci5</p>
+          <span class="tag">Send Message ↗</span>
+        </a>
+
+        <a class="glass social-card reveal"
+           href="https://wa.me/6285746154778" target="_blank" rel="noopener noreferrer">
+          <div class="card-icon">💬</div>
+          <h3>WhatsApp</h3>
+          <p>0857-4615-4778</p>
+          <span class="tag">Chat Me ↗</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Made with 💜 by <a href="#home">Raffi Nasri Maulana</a></p>
+    <p>© <span id="year"></span> RAFFI.SPACE · Explore your universe ✦</p>
+  </footer>
+
+  <script>
+    // TAHUN OTOMATIS
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // TOMBOL MASUK
+    const intro = document.getElementById("intro");
+    document.getElementById("enterBtn").addEventListener("click", () => {
+      intro.classList.add("hide");
+      sessionStorage.setItem("raffispaceEntered", "yes");
+    });
+
+    // Jika sudah masuk pada sesi ini, langsung tampilkan website.
+    if (sessionStorage.getItem("raffispaceEntered") === "yes") {
+      intro.classList.add("hide");
+    }
+
+    // MENU RESPONSIF
+    const menuBtn = document.getElementById("menuBtn");
+    const nav = document.getElementById("nav");
+
+    menuBtn.addEventListener("click", () => {
+      const isOpen = nav.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    nav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    // ANIMASI MUNCUL BERTAHAP SAAT SCROLL
+    const revealItems = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: "0px 0px -25px 0px"
+      });
+
+      revealItems.forEach((item, index) => {
+        item.style.setProperty("--reveal-delay", `${(index % 3) * 100}ms`);
+        revealObserver.observe(item);
+      });
+    } else {
+      revealItems.forEach(item => item.classList.add("visible"));
+    }
+
+    // BINTANG BERKELIP DI LATAR BELAKANG
+    const canvas = document.getElementById("stars");
+    const ctx = canvas.getContext("2d");
+    let stars = [];
+    let width = 0;
+    let height = 0;
+    let animationFrame;
+
+    function resizeCanvas() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = width + "px";
+      canvas.style.height = height + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const count = Math.min(160, Math.floor(width * height / 6500));
+      stars = Array.from({ length: count }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: Math.random() * 1.5 + .3,
+        alpha: Math.random() * .65 + .2,
+        speed: Math.random() * .012 + .003
+      }));
+    }
+
+    function drawStars() {
+      ctx.clearRect(0, 0, width, height);
+
+      for (const star of stars) {
+        star.alpha += star.speed;
+        if (star.alpha > .95 || star.alpha < .15) {
+          star.speed *= -1;
+        }
+
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(210, 200, 255, ${star.alpha})`;
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = "#a78bfa";
+        ctx.fill();
+      }
+
+      ctx.shadowBlur = 0;
+      animationFrame = requestAnimationFrame(drawStars);
+    }
+
+    resizeCanvas();
+    drawStars();
+
+    window.addEventListener("resize", resizeCanvas);
+
+    // HENTIKAN ANIMASI BINTANG JIKA TAB TIDAK AKTIF
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        cancelAnimationFrame(animationFrame);
+      } else {
+        cancelAnimationFrame(animationFrame);
+        drawStars();
+      }
+    });
+  </script>
+</body>
+</html>
